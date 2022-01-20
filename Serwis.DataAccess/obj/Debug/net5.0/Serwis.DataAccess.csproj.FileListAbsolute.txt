@@ -1,0 +1,15 @@
+G:\Kurs\SerwisSprzetuKomputerowego\Serwis.DataAccess\bin\Debug\net5.0\Serwis.DataAccess.deps.json
+G:\Kurs\SerwisSprzetuKomputerowego\Serwis.DataAccess\bin\Debug\net5.0\Serwis.DataAccess.dll
+G:\Kurs\SerwisSprzetuKomputerowego\Serwis.DataAccess\bin\Debug\net5.0\ref\Serwis.DataAccess.dll
+G:\Kurs\SerwisSprzetuKomputerowego\Serwis.DataAccess\bin\Debug\net5.0\Serwis.DataAccess.pdb
+G:\Kurs\SerwisSprzetuKomputerowego\Serwis.DataAccess\obj\Debug\net5.0\Serwis.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+G:\Kurs\SerwisSprzetuKomputerowego\Serwis.DataAccess\obj\Debug\net5.0\Serwis.DataAccess.AssemblyInfoInputs.cache
+G:\Kurs\SerwisSprzetuKomputerowego\Serwis.DataAccess\obj\Debug\net5.0\Serwis.DataAccess.AssemblyInfo.cs
+G:\Kurs\SerwisSprzetuKomputerowego\Serwis.DataAccess\obj\Debug\net5.0\Serwis.DataAccess.csproj.CoreCompileInputs.cache
+G:\Kurs\SerwisSprzetuKomputerowego\Serwis.DataAccess\obj\Debug\net5.0\Serwis.DataAccess.dll
+G:\Kurs\SerwisSprzetuKomputerowego\Serwis.DataAccess\obj\Debug\net5.0\ref\Serwis.DataAccess.dll
+G:\Kurs\SerwisSprzetuKomputerowego\Serwis.DataAccess\obj\Debug\net5.0\Serwis.DataAccess.pdb
+G:\Kurs\SerwisSprzetuKomputerowego\Serwis.DataAccess\bin\Debug\net5.0\Serwis.DataAccess.runtimeconfig.json
+G:\Kurs\SerwisSprzetuKomputerowego\Serwis.DataAccess\bin\Debug\net5.0\Serwis.DataAccess.runtimeconfig.dev.json
+G:\Kurs\SerwisSprzetuKomputerowego\Serwis.DataAccess\obj\Debug\net5.0\Serwis.DataAccess.genruntimeconfig.cache
+G:\Kurs\SerwisSprzetuKomputerowego\Serwis.DataAccess\obj\Debug\net5.0\Serwis.DataAccess.csproj.AssemblyReference.cache
