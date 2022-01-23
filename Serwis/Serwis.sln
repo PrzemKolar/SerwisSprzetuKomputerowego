@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.32106.194
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Serwis", "Serwis.csproj", "{A9715B3A-7E40-4540-A68D-944D22739EBB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Serwis.DataAccess", "..\Serwis.DataAccess\Serwis.DataAccess.csproj", "{55B59276-5A58-44E5-9D56-EDBA91F26AB1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Serwis.DataAccess", "..\Serwis.DataAccess\Serwis.DataAccess.csproj", "{55B59276-5A58-44E5-9D56-EDBA91F26AB1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Serwis.ApplicationServices", "..\Serwis.ApplicationServices\Serwis.ApplicationServices.csproj", "{2E6C064B-4015-4CD5-85B2-B5490609EE4B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{55B59276-5A58-44E5-9D56-EDBA91F26AB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{55B59276-5A58-44E5-9D56-EDBA91F26AB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{55B59276-5A58-44E5-9D56-EDBA91F26AB1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E6C064B-4015-4CD5-85B2-B5490609EE4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E6C064B-4015-4CD5-85B2-B5490609EE4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E6C064B-4015-4CD5-85B2-B5490609EE4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E6C064B-4015-4CD5-85B2-B5490609EE4B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -5,6 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MediatR" Version="10.0.1" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.13" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.13">
       <PrivateAssets>all</PrivateAssets>
@@ -19,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Serwis.ApplicationServices\Serwis.ApplicationServices.csproj" />
     <ProjectReference Include="..\Serwis.DataAccess\Serwis.DataAccess.csproj" />
   </ItemGroup>
 

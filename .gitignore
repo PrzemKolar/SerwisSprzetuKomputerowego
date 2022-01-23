@@ -1,2 +1,6 @@
 Serwis/bin
 Serwis/obj
+Serwis.DataAccess/bin
+Serwis.DataAccess/obj
+Serwis.ApplicationServices/bin
+Serwis.ApplicationServices/obj
