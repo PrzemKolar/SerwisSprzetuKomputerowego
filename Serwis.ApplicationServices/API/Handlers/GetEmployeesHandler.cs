@@ -1,14 +1,12 @@
 ﻿using MediatR;
 using Serwis.ApplicationServices.API.Domain;
 using Serwis.DataAccess;
-using Serwis.DataAccess.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-
 
 namespace Serwis.ApplicationServices.API.Handlers
 {

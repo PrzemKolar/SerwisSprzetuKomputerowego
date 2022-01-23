@@ -1,29 +1,29 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Serwis.ApplicationServices.API.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Serwis.ApplicationServices.API.Domain;
 
 namespace Serwis.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class EmployeesController : ControllerBase
+    public class ProfitsController : ControllerBase
     {
         private readonly IMediator mediator;
 
-        public EmployeesController(IMediator mediator)
+        public ProfitsController(IMediator mediator)
         {
             this.mediator = mediator;
         }
 
         [HttpGet]
         [Route("")]
-        public async Task<IActionResult> GetAllEmployees([FromQuery] GetEmployeesRequest request)
+        public async Task<IActionResult> GetAllProfits([FromQuery] GetProfitsRequest request)
         {
-            var response = await this.mediator.Send(request);
+            var response = await mediator.Send(request);
             return this.Ok(response);
         }
     }
