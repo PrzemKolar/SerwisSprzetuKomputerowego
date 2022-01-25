@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using AutoMapper;
+using MediatR;
 using Serwis.ApplicationServices.API.Domain;
 using Serwis.DataAccess;
 using System;
@@ -13,26 +14,25 @@ namespace Serwis.ApplicationServices.API.Handlers
     public class GetDocumentsHandler : IRequestHandler<GetDocumentsRequest, GetDocumentsResponse>
     {
         private readonly IRepository<DataAccess.Entities.Document> documentRepository;
+        private readonly IMapper mapper;
 
-        public GetDocumentsHandler(IRepository<DataAccess.Entities.Document> documentRepository)
+        public GetDocumentsHandler(IRepository<DataAccess.Entities.Document> documentRepository, IMapper mapper)
         {
             this.documentRepository = documentRepository;
+            this.mapper = mapper;
         }
 
-        public Task<GetDocumentsResponse> Handle(GetDocumentsRequest request, CancellationToken cancellationToken)
+        public async Task<GetDocumentsResponse> Handle(GetDocumentsRequest request, CancellationToken cancellationToken)
         {
-            var documents = documentRepository.GetAll();
-            var domainDocuments = documents.Select(x => new Domain.Models.Document() 
-            { 
-                Order = x.Order 
-            });
+            var documents = await documentRepository.GetAll();
+            var mappedDocuments = this.mapper.Map<List<Domain.Models.Document>>(documents);
 
             var response = new GetDocumentsResponse()
             {
-                Data = domainDocuments.ToList()
+                Data = mappedDocuments
             };
 
-            return Task.FromResult(response);
+            return response;
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using AutoMapper;
+using MediatR;
 using Serwis.ApplicationServices.API.Domain;
 using Serwis.ApplicationServices.API.Domain.Models;
 using Serwis.DataAccess;
@@ -14,22 +15,21 @@ namespace Serwis.ApplicationServices.API.Handlers
     public class GetRegulationsHandler : IRequestHandler<GetRegulationsRequest, GetRegulationsResponse>
     {
         private readonly IRepository<DataAccess.Entities.Regulation> regulationRepository;
+        private readonly IMapper mapper;
 
-        public GetRegulationsHandler(IRepository<DataAccess.Entities.Regulation> regulationRepository)
+        public GetRegulationsHandler(IRepository<DataAccess.Entities.Regulation> regulationRepository, IMapper mapper)
         {
             this.regulationRepository = regulationRepository;
+            this.mapper = mapper;
         }
 
-        public Task<GetRegulationsResponse> Handle(GetRegulationsRequest request, CancellationToken cancellationToken)
+        public async Task<GetRegulationsResponse> Handle(GetRegulationsRequest request, CancellationToken cancellationToken)
         {
-            var regulations = regulationRepository.GetAll();
-            var domainRegulations = regulations.Select(x => new Domain.Models.Regulation()
-            {
-                Text = x.Text
-            });
+            var regulations = await regulationRepository.GetAll();
+            var mappedRegulations = this.mapper.Map<List<Domain.Models.Regulation>>(regulations);
 
-            var response = new GetRegulationsResponse() { Data = domainRegulations.ToList() };
-            return Task.FromResult(response);
+            var response = new GetRegulationsResponse() { Data = mappedRegulations };
+            return response;
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using AutoMapper;
+using MediatR;
 using Serwis.ApplicationServices.API.Domain;
 using Serwis.DataAccess;
 using System;
@@ -13,28 +14,26 @@ namespace Serwis.ApplicationServices.API.Handlers
     public class GetOrderHistoriesHandler : IRequestHandler<GetOrderHistoriesRequest, GetOrderHistoriesResponse>
     {
         private readonly IRepository<DataAccess.Entities.OrderHistory> orderHistoryRepository;
+        private readonly IMapper mapper;
 
-        public GetOrderHistoriesHandler(IRepository<DataAccess.Entities.OrderHistory> orderHistoryRepository)
+        public GetOrderHistoriesHandler(IRepository<DataAccess.Entities.OrderHistory> orderHistoryRepository, IMapper mapper)
         {
             this.orderHistoryRepository = orderHistoryRepository;
+            this.mapper = mapper;
         }
 
-        public Task<GetOrderHistoriesResponse> Handle(GetOrderHistoriesRequest request, CancellationToken cancellationToken)
+        public async Task<GetOrderHistoriesResponse> Handle(GetOrderHistoriesRequest request, CancellationToken cancellationToken)
         {
-            var orderHistories = orderHistoryRepository.GetAll();
-
-            var domainOrderHistories = orderHistories.Select(x => new Domain.Models.OrderHistory()
-            {
-                Description = x.Description,
-                Title = x.Title
-            });
+            var orderHistories = await orderHistoryRepository.GetAll();
+            var mappedOrderHistories = this.mapper.Map<List<Domain.Models.OrderHistory>>(orderHistories);
+            
 
             var response = new GetOrderHistoriesResponse() 
             { 
-                Data = domainOrderHistories.ToList() 
+                Data = mappedOrderHistories
             };
 
-            return Task.FromResult(response);
+            return response;
         }
     }
 }
