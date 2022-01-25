@@ -2,6 +2,7 @@
 using MediatR;
 using Serwis.ApplicationServices.API.Domain;
 using Serwis.DataAccess;
+using Serwis.DataAccess.CQRS.Queries;
 using Serwis.DataAccess.Entities;
 using System;
 using System.Collections.Generic;
@@ -14,18 +15,19 @@ namespace Serwis.ApplicationServices.API.Handlers
 {
     public class GetClientsHandler : IRequestHandler<GetClientsRequest, GetClientsResponse>
     {
-        private readonly IRepository<DataAccess.Entities.Client> clientRepository;
+        private readonly IQueryExecutor queryExecutor;
         private readonly IMapper mapper;
 
-        public GetClientsHandler(IRepository<DataAccess.Entities.Client> clientRepository, IMapper mapper)
+        public GetClientsHandler(IMapper mapper, IQueryExecutor queryExecutor)
         {
-            this.clientRepository = clientRepository;
+            this.queryExecutor = queryExecutor;
             this.mapper = mapper;
         }
 
         public async Task<GetClientsResponse> Handle(GetClientsRequest request, CancellationToken cancellationToken)
         {
-            var clients = await this.clientRepository.GetAll();
+            var query = new GetClientsQuery();
+            var clients = await this.queryExecutor.Execute(query);
             var mappedClients = this.mapper.Map<List<Domain.Models.Client>>(clients);
 
             var response = new GetClientsResponse()

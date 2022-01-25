@@ -9,30 +9,27 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Serwis.DataAccess.CQRS.Queries;
 
 namespace Serwis.ApplicationServices.API.Handlers
 {
     public class GetEmployeesHandler : IRequestHandler<GetEmployeesRequest, GetEmployeesResponse>
     {
-        private readonly IRepository<DataAccess.Entities.Employee> employeeRepository;
+        private readonly IQueryExecutor queryExecutor;
         private readonly IMapper mapper;
 
-        public GetEmployeesHandler(IRepository<DataAccess.Entities.Employee> employeeRepository, IMapper mapper)
+        public GetEmployeesHandler(IMapper mapper, IQueryExecutor queryExecutor)
         {
-            this.employeeRepository = employeeRepository;
+            this.queryExecutor = queryExecutor;
             this.mapper = mapper;
         }
 
         public async Task<GetEmployeesResponse> Handle(GetEmployeesRequest request, CancellationToken cancellationToken)
         {
-            var employees = await this.employeeRepository.GetAll();
-            var mappedEmployees = this.mapper.Map<List<Employee>>(employees);
+            var query = new GetEmployeesQuery();
+            var employees = await this.queryExecutor.Execute(query);
 
-            //var domainEmployees = employees.Select(x => new Domain.Models.Employee()
-            //{
-            //    FirstName = x.FirstName,
-            //    LastName = x.LastName
-            //});
+            var mappedEmployees = this.mapper.Map<List<Employee>>(employees);
 
             var response = new GetEmployeesResponse()
             {

@@ -2,6 +2,7 @@
 using MediatR;
 using Serwis.ApplicationServices.API.Domain;
 using Serwis.DataAccess;
+using Serwis.DataAccess.CQRS.Queries;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,18 +14,19 @@ namespace Serwis.ApplicationServices.API.Handlers
 {
     public class GetOrderHistoriesHandler : IRequestHandler<GetOrderHistoriesRequest, GetOrderHistoriesResponse>
     {
-        private readonly IRepository<DataAccess.Entities.OrderHistory> orderHistoryRepository;
+        private readonly IQueryExecutor queryExecutor;
         private readonly IMapper mapper;
 
-        public GetOrderHistoriesHandler(IRepository<DataAccess.Entities.OrderHistory> orderHistoryRepository, IMapper mapper)
+        public GetOrderHistoriesHandler(IMapper mapper, IQueryExecutor queryExecutor)
         {
-            this.orderHistoryRepository = orderHistoryRepository;
+            this.queryExecutor = queryExecutor;
             this.mapper = mapper;
         }
 
         public async Task<GetOrderHistoriesResponse> Handle(GetOrderHistoriesRequest request, CancellationToken cancellationToken)
         {
-            var orderHistories = await orderHistoryRepository.GetAll();
+            var query = new GetOrderHistoriesQuery();
+            var orderHistories = await this.queryExecutor.Execute(query);
             var mappedOrderHistories = this.mapper.Map<List<Domain.Models.OrderHistory>>(orderHistories);
             
 
