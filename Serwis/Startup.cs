@@ -16,6 +16,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Serwis.ApplicationServices.API.Domain;
 using Serwis.ApplicationServices.Mappings;
+using Serwis.DataAccess.CQRS.Commands;
+using Serwis.DataAccess.CQRS;
+
 namespace Serwis
 {
     public class Startup
@@ -31,7 +34,9 @@ namespace Serwis
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddTransient<IQueryExecutor, QueryBase>();
+            services.AddTransient<ICommandExecutor, CommandExecutor>();
+
+            services.AddTransient<IQueryExecutor, QueryExecutor>();
 
             services.AddAutoMapper(typeof(EmployeesProfile).Assembly);
 

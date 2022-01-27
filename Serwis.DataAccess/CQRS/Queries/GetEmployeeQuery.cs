@@ -15,8 +15,7 @@ namespace Serwis.DataAccess.CQRS.Queries
 
         public override async Task<Employee> Execute(ServiceStorageContext context)
         {
-            var employee = await context.Employees.FirstOrDefaultAsync(x => x.Id == this.Id);
-            return employee;
+            return await context.Employees.FirstOrDefaultAsync(x => x.Id == this.Id);
         }
     }
 }

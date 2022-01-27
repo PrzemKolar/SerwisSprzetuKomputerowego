@@ -26,7 +26,10 @@ namespace Serwis.ApplicationServices.API.Handlers
 
         public async Task<GetEmployeesResponse> Handle(GetEmployeesRequest request, CancellationToken cancellationToken)
         {
-            var query = new GetEmployeesQuery();
+            var query = new GetEmployeesQuery()
+            {
+                FirstName = request.FirstName
+            };
             var employees = await this.queryExecutor.Execute(query);
 
             var mappedEmployees = this.mapper.Map<List<Employee>>(employees);

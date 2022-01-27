@@ -10,10 +10,13 @@ namespace Serwis.DataAccess.CQRS.Queries
 {
     public class GetEmployeesQuery : QueryBase<List<Employee>>
     {
+        public string FirstName { get; set; }
         public override async Task<List<Employee>> Execute(ServiceStorageContext context)
         {
-            var employees = await context.Employees.ToListAsync();
-            return employees;
+            if(FirstName == null)
+                return await context.Employees.ToListAsync();
+            else
+                return await context.Employees.Where(x => x.FirstName == FirstName).ToListAsync();
         }
     }
 }

@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace Serwis.DataAccess
 {
-    public class QueryBase : IQueryExecutor
+    public class QueryExecutor : IQueryExecutor
     {
         private readonly ServiceStorageContext context;
 
-        public QueryBase(ServiceStorageContext context)
+        public QueryExecutor(ServiceStorageContext context)
         {
             this.context = context;
         }

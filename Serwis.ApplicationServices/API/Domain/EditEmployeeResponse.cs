@@ -1,4 +1,4 @@
-﻿using MediatR;
+﻿using Serwis.ApplicationServices.API.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace Serwis.ApplicationServices.API.Domain
 {
-    public class GetEmployeesRequest : IRequest<GetEmployeesResponse>
+    public class EditEmployeeResponse : ResponseBase<Employee>
     {
-        public string FirstName { get; set; }
+
     }
 }
