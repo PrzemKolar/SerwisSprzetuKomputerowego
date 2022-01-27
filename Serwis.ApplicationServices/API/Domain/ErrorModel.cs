@@ -6,8 +6,13 @@ using System.Threading.Tasks;
 
 namespace Serwis.ApplicationServices.API.Domain
 {
-    public class ResponseBase<T> : ErrorResponseBase
+    public class ErrorModel
     {
-        public T Data { get; set; }
+        public ErrorModel(string error)
+        {
+            this.Error = error;
+        }
+
+        public string Error { get; private set; }
     }
 }

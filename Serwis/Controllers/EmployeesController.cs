@@ -11,49 +11,42 @@ namespace Serwis.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class EmployeesController : ControllerBase
+    public class EmployeesController : ApiControllerBase
     {
-        private readonly IMediator mediator;
-
-        public EmployeesController(IMediator mediator)
+        public EmployeesController(IMediator mediator) : base(mediator)
         {
-            this.mediator = mediator;
         }
 
         [HttpGet]
         [Route("")]
-        public async Task<IActionResult> GetAllEmployees([FromQuery] GetEmployeesRequest request)
+        public Task<IActionResult> GetAllEmployees([FromQuery] GetEmployeesRequest request)
         {
-            var response = await this.mediator.Send(request);
-            return this.Ok(response);
+            return HandleRequest<GetEmployeesRequest, GetEmployeesResponse>(request);
         }
 
         [HttpGet]
         [Route("{employeeId}")]
-        public async Task<IActionResult> GetAllEmployees([FromRoute] int employeeId)
+        public Task<IActionResult> GetAllEmployees([FromRoute] int employeeId)
         {
             var request = new GetEmployeeByIdRequest()
             {
                 EmployeeId = employeeId
             };
-            var response = await this.mediator.Send(request);
-            return this.Ok(response);
+            return HandleRequest<GetEmployeeByIdRequest, GetEmployeeByIdResponse>(request);
         }
 
         [HttpPost]
         [Route("")]
-        public async Task<IActionResult> AddEmployee([FromBody] AddEmployeeRequest request)
+        public Task<IActionResult> AddEmployee([FromBody] AddEmployeeRequest request)
         {
-            var response = await this.mediator.Send(request);
-            return this.Ok(response);
+            return this.HandleRequest<AddEmployeeRequest, AddEmployeeResponse>(request);
         }
 
         [HttpPut]
         [Route("")]
-        public async Task<IActionResult> EditEmployee([FromBody] EditEmployeeRequest request)
+        public Task<IActionResult> EditEmployee([FromBody] EditEmployeeRequest request)
         {
-            var response = await this.mediator.Send(request);
-            return this.Ok(response);
+            return this.HandleRequest<EditEmployeeRequest, EditEmployeeResponse>(request);
         }
     }
 }

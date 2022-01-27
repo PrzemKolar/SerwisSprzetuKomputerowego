@@ -2,7 +2,7 @@
 
 namespace Serwis.ApplicationServices.API.Domain
 {
-    internal class GetEmployeeByIdResponse : ResponseBase<Employee>
+    public class GetEmployeeByIdResponse : ResponseBase<Employee>
     {
 
     }

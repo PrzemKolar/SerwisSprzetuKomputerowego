@@ -10,6 +10,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Serwis.DataAccess.CQRS.Queries;
 using Serwis.ApplicationServices.API.Domain.Models;
+using Serwis.ApplicationServices.API.ErrorHandling;
 
 namespace Serwis.ApplicationServices.API.Handlers
 {
@@ -31,6 +32,10 @@ namespace Serwis.ApplicationServices.API.Handlers
                 Id = request.EmployeeId
             };
             var employee = await queryExecutor.Execute(query);
+            if(employee == null)
+            {
+                return new GetEmployeeByIdResponse() { Error = new ErrorModel(ErrorType.NotFound) };
+            }
             var mappedEmployee = mapper.Map<Employee>(employee);
             return new GetEmployeeByIdResponse() { Data = mappedEmployee };
         }

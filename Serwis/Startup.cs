@@ -18,6 +18,8 @@ using Serwis.ApplicationServices.API.Domain;
 using Serwis.ApplicationServices.Mappings;
 using Serwis.DataAccess.CQRS.Commands;
 using Serwis.DataAccess.CQRS;
+using FluentValidation.AspNetCore;
+using Serwis.ApplicationServices.API.Validators;
 
 namespace Serwis
 {
@@ -34,6 +36,13 @@ namespace Serwis
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<ApiBehaviorOptions>(options =>
+            {
+                options.SuppressModelStateInvalidFilter = true;
+            });
+
+            services.AddMvcCore().AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<AddEmployeeRequestValidator>());
+
             services.AddTransient<ICommandExecutor, CommandExecutor>();
 
             services.AddTransient<IQueryExecutor, QueryExecutor>();
