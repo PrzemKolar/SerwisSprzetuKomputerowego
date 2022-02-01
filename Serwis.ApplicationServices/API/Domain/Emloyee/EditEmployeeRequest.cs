@@ -7,15 +7,11 @@ using System.Threading.Tasks;
 
 namespace Serwis.ApplicationServices.API.Domain
 {
-    public class AddClientRequest : IRequest <AddClientResponse>
+    public class EditEmployeeRequest : RequestBase<EditEmployeeResponse>
     {
+        public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string PhoneNumber { get; set; }
-        public string Street { get; set; }
-        public int HouseNumber { get; set; }
-        public int ApartmentNumber { get; set; }
-        public string PostCode { get; set; }
-        public int Discount { get; set; }
     }
 }

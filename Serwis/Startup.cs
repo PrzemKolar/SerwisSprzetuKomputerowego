@@ -20,6 +20,8 @@ using Serwis.DataAccess.CQRS.Commands;
 using Serwis.DataAccess.CQRS;
 using FluentValidation.AspNetCore;
 using Serwis.ApplicationServices.API.Validators;
+using Microsoft.AspNetCore.Authentication;
+using Serwis.Authentication;
 
 namespace Serwis
 {
@@ -36,6 +38,9 @@ namespace Serwis
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAuthentication("BasicAuthentication")
+                .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);
+
             services.Configure<ApiBehaviorOptions>(options =>
             {
                 options.SuppressModelStateInvalidFilter = true;
@@ -76,6 +81,8 @@ namespace Serwis
 
             app.UseRouting();
 
+            app.UseAuthentication();
+            
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

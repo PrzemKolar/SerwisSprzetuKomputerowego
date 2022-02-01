@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace Serwis.Controllers
@@ -20,7 +21,7 @@ namespace Serwis.Controllers
         }
 
         protected async Task<IActionResult> HandleRequest<TRequest, TResponse>(TRequest request)
-            where TRequest : IRequest<TResponse>
+            where TRequest : RequestBase<TResponse>
             where TResponse : ErrorResponseBase
         {
             if(!this.ModelState.IsValid)
@@ -29,6 +30,8 @@ namespace Serwis.Controllers
                     .Where(x => x.Value.Errors.Any())
                     .Select(x => new { property = x.Key, errors = x.Value.Errors }));
             }
+
+            request.Name = this.User.FindFirstValue(ClaimTypes.Name);
 
             var response = await this.mediator.Send(request);
             if(response.Error != null)

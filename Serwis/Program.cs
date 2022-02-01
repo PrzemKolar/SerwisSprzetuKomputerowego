@@ -28,5 +28,8 @@ namespace Serwis
                     logging.SetMinimumLevel(LogLevel.Trace);
                 }).UseNLog();
             
+
+
+
     }
 }

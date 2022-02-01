@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace Serwis.ApplicationServices.API.Domain
 {
-    public class GetProfitsRequest : IRequest<GetProfitsResponse>
+    public class GetEmployeesRequest : RequestBase<GetEmployeesResponse>
     {
-
+        public string FirstName { get; set; }
     }
 }

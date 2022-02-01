@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace Serwis.ApplicationServices.API.Domain
 {
-    public class GetClientsRequest : IRequest<GetClientsResponse>
+    public class GetEmployeeByIdRequest : RequestBase<GetEmployeeByIdResponse>
     {
-
+        public int EmployeeId { get; set; }
     }
 }

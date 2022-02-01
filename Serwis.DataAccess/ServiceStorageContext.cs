@@ -23,5 +23,6 @@ namespace Serwis.DataAccess
         public DbSet<Document> Documents { get; set; }
         public DbSet<Regulation> Regulations { get; set; }
 
+        public DbSet<User> Users { get; set; }
     }
 }

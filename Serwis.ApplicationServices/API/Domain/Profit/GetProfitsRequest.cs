@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Serwis.ApplicationServices.API.Domain
 {
-    public class GetRegulationsRequest : IRequest<GetRegulationsResponse>
+    public class GetProfitsRequest : RequestBase<GetProfitsResponse>
     {
 
     }
