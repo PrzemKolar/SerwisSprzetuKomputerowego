@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/serwis/databases/ServiceStorage",
+      "type": "mssql.azure",
+      "connectionId": "ConnectionStrings:ServiceDatabaseConnections",
+      "secretStore": "AzureAppSettings"
+    }
+  }
+}

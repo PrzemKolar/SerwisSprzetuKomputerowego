@@ -13,7 +13,8 @@ namespace Serwis.DataAccess
         public ServiceStorageContext CreateDbContext(string[] args)
         {
             var optionsBuilder = new DbContextOptionsBuilder<ServiceStorageContext>();
-            optionsBuilder.UseSqlServer("Data Source=localhost\\SQLEXPRESS;Initial Catalog=ServiceStorage;Integrated Security=True");
+            optionsBuilder.UseSqlServer("Server=tcp:serwis.database.windows.net,1433;Initial Catalog=ServiceStorage;Persist Security Info=False;User ID=Przemek;Password=WNn2mhorvn;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+            //local Data Source=localhost\\SQLEXPRESS;Initial Catalog=ServiceStorage;Integrated Security=True
             return new ServiceStorageContext(optionsBuilder.Options);
         }
     }
