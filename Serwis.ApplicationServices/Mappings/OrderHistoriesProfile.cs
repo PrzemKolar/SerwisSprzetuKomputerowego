@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Serwis.ApplicationServices.API.Domain.Models;
+using Serwis.ApplicationServices.API.Domain.OrderHistory;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,9 @@ namespace Serwis.ApplicationServices.Mappings
             this.CreateMap<DataAccess.Entities.OrderHistory, OrderHistory>()
                 .ForMember(x => x.Description, y => y.MapFrom(z => z.Description))
                 .ForMember(x => x.Title, y => y.MapFrom(z => z.Title));
+
+            this.CreateMap<AddOrderHistoryRequest, DataAccess.Entities.OrderHistory>()
+                .ForMember(x => x.Description, y => y.MapFrom(z => z.Description));
         }
     }
 }

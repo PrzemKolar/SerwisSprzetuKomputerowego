@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Serwis.ApplicationServices.API.Domain
 {
-    public class GetOrderHistoriesResponse : ResponseBase<List<OrderHistory>>
+    public class GetOrderHistoriesResponse : ResponseBase<List<Models.OrderHistory>>
     {
 
     }

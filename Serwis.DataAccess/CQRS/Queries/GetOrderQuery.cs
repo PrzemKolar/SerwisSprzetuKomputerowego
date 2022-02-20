@@ -1,0 +1,18 @@
+﻿using Serwis.DataAccess.Entities;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Serwis.DataAccess.CQRS.Queries
+{
+    public class GetOrderQuery : QueryBase<Entities.Order>
+    {
+        public int Id { get; set; }
+        public async override Task<Order> Execute(ServiceStorageContext context)
+        {
+            return await context.Orders.FindAsync(Id);
+        }
+    }
+}
