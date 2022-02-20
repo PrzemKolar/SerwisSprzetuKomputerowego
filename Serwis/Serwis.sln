@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Serwis.DataAccess", "..\Ser
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Serwis.ApplicationServices", "..\Serwis.ApplicationServices\Serwis.ApplicationServices.csproj", "{2E6C064B-4015-4CD5-85B2-B5490609EE4B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SerwisFrontEnd", "..\SerwisFrontEnd\SerwisFrontEnd.csproj", "{A01CB070-2E41-4666-9464-AB84A69A5B86}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SerwisFrontEnd", "..\SerwisFrontEnd\SerwisFrontEnd.csproj", "{A01CB070-2E41-4666-9464-AB84A69A5B86}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
