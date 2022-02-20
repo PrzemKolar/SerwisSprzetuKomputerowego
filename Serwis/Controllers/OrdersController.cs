@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Serwis.ApplicationServices.API.Domain;
+using Serwis.ApplicationServices.API.Domain.Order;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +23,14 @@ namespace Serwis.Controllers
         [HttpGet]
         [Route("")]
         public async Task<IActionResult> GetAllOrders([FromQuery] GetOrdersRequest request)
+        {
+            var response = await this.mediator.Send(request);
+            return this.Ok(response);
+        }
+
+        [HttpPost]
+        [Route("")]
+        public async Task<IActionResult> AddOrder([FromBody] AddOrderRequest request)
         {
             var response = await this.mediator.Send(request);
             return this.Ok(response);

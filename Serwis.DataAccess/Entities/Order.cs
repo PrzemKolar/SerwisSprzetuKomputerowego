@@ -32,10 +32,8 @@ namespace Serwis.DataAccess.Entities
         [Required]
         public DateTime OrderDate { get; set; }
 
-        [Required]
         public List<OrderHistory> OrderHistories { get; set; }
 
-        [Required]
         public List<Document> Documents { get; set; }
     }
 }
