@@ -35,5 +35,13 @@ namespace Serwis.Controllers
             var response = await this.mediator.Send(request);
             return this.Ok(response);
         }
+
+        [HttpPut]
+        [Route("")]
+        public async Task<IActionResult> EditOrder([FromBody] EditOrderRequest request)
+        {
+            var response = await this.mediator.Send(request);
+            return this.Ok(response);
+        }
     }
 }

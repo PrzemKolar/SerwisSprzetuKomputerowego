@@ -11,5 +11,6 @@ namespace Serwis.ApplicationServices.API.Domain.Models
         public string DeviceName { get; set; }
         public string DescriptionFault { get; set; }
         public float Price { get; set; }
+        public string Diagnosis { get; set; }
     }
 }

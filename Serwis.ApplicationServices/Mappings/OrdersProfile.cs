@@ -22,6 +22,11 @@ namespace Serwis.ApplicationServices.Mappings
                 .ForMember(x => x.DeviceName, y => y.MapFrom(z => z.DeviceName))
                 .ForMember(x => x.DescriptionFault, y => y.MapFrom(z => z.DescriptionFault))
                 .ForMember(x => x.DeviceSN, y => y.MapFrom(z => z.DeviceSN));
+
+            this.CreateMap<EditOrderRequest, DataAccess.Entities.Order>()
+                .ForMember(x => x.Diagnosis, y => y.MapFrom(z => z.Diagnosis))
+                .ForMember(x => x.Price, y => y.MapFrom(z => z.Price))
+                .ForMember(x => x.Id, y => y.MapFrom(z => z.Id));
         }
     }
 }
