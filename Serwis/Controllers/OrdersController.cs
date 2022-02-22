@@ -28,6 +28,14 @@ namespace Serwis.Controllers
             return this.Ok(response);
         }
 
+        [HttpGet]
+        [Route("ForEmployee")]
+        public async Task<IActionResult> GetOrdersForEmployee([FromQuery] GetOrdersForEmployeeRequest request)
+        {
+            var response = await this.mediator.Send(request);
+            return this.Ok(response);
+        }
+
         [HttpPost]
         [Route("")]
         public async Task<IActionResult> AddOrder([FromBody] AddOrderRequest request)
