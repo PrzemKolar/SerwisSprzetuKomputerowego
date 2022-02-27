@@ -26,7 +26,7 @@ namespace Serwis.Controllers
 
         [HttpGet]
         [Route("{employeeId}")]
-        public Task<IActionResult> GetAllEmployees([FromRoute] int employeeId)
+        public Task<IActionResult> GetAllEmployeeById([FromRoute] int employeeId)
         {
             var request = new GetEmployeeByIdRequest()
             {
