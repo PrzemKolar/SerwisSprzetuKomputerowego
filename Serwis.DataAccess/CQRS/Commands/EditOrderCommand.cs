@@ -14,22 +14,28 @@ namespace Serwis.DataAccess.CQRS.Commands
             var employee = context.Employees.Find(1);
             var order = await context.Orders.FindAsync(Parameter.Id);
 
-            if(Parameter.Diagnosis != null)
+            if(Parameter.Diagnosis != order.Diagnosis)
             {
                 order.Diagnosis = Parameter.Diagnosis;
                 await context.OrderHistories.AddAsync(CreateOrderHistory(order, employee, "Wystawiono diagnozę", Parameter.Diagnosis));
             }   
             
-            if(Parameter.Price != default)
+            if(Parameter.Price != order.Price)
             {
                 order.Price = Parameter.Price;
                 await context.OrderHistories.AddAsync(CreateOrderHistory(order, employee, "Określono kwotę naprawy", $"Kwota do zapłaty: {Parameter.Price} zł"));
             }
 
-            if(Parameter.PayedPrice != default)
+            if(Parameter.PayedPrice != order.PayedPrice)
             {
                 order.PayedPrice = Parameter.PayedPrice;
                 await context.OrderHistories.AddAsync(CreateOrderHistory(order, employee, "Przyjęcie gotówki", $"Przyjęto: {Parameter.PayedPrice} zł "));
+            }
+
+            if (Parameter.RepairStatus != order.RepairStatus)
+            {
+                order.RepairStatus = Parameter.RepairStatus;
+                await context.OrderHistories.AddAsync(CreateOrderHistory(order, employee, "Zmiana statusu naprawy", $"Status zmieniony na: {Parameter.RepairStatus}"));
             }
 
             await context.SaveChangesAsync();

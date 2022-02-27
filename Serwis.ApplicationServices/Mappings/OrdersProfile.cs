@@ -28,7 +28,8 @@ namespace Serwis.ApplicationServices.Mappings
                 .ForMember(x => x.Diagnosis, y => y.MapFrom(z => z.Diagnosis))
                 .ForMember(x => x.Price, y => y.MapFrom(z => z.Price))
                 .ForMember(x => x.Id, y => y.MapFrom(z => z.Id))
-                .ForMember(x => x.PayedPrice, y => y.MapFrom(z => z.Id));
+                .ForMember(x => x.PayedPrice, y => y.MapFrom(z => z.PayedPrice))
+                .ForMember(x => x.RepairStatus, y => y.MapFrom(z => z.OrderStatus));
 
             this.CreateMap<GetOrdersByFiltersRequest, GetOrdersByFiltersQuery>()
                 .ForMember(x => x.Device, y => y.MapFrom(z => z.Device))

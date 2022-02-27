@@ -11,7 +11,7 @@ namespace Serwis.ApplicationServices.API.Domain.Order
         public int Id { get; set; }
         public string Diagnosis { get; set; }
         public float Price { get; set; }
-
         public float PayedPrice { get; set; }
+        public int OrderStatus { get; set; }
     }
 }
