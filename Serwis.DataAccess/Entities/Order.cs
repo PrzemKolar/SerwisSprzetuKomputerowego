@@ -16,7 +16,8 @@ namespace Serwis.DataAccess.Entities
             waitingForTheClientDecision,
             inRepair,
             Repaired,
-            Closed
+            Closed,
+            Resigned
         }
 
         [Required]

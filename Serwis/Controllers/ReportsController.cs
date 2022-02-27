@@ -22,5 +22,12 @@ namespace Serwis.Controllers
             return HandleRequest<GetRepairedOrdersRequest, GetRepairedOrdersResponse>(request);
         }
 
+        [HttpGet]
+        [Route("Resigned")]
+        public Task<IActionResult> GetResignedOrders([FromQuery] GetResignedOrdersRequest request)
+        {
+            return HandleRequest<GetResignedOrdersRequest, GetResignedOrdersResponse>(request);
+        }
+
     }
 }
