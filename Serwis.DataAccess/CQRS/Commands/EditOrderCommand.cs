@@ -11,12 +11,41 @@ namespace Serwis.DataAccess.CQRS.Commands
     {
         public async override Task<Order> Exexute(ServiceStorageContext context)
         {
+            var employee = context.Employees.Find(1);
             var order = await context.Orders.FindAsync(Parameter.Id);
-            order.Diagnosis = Parameter.Diagnosis;
-            order.Price = Parameter.Price;
+
+            if(Parameter.Diagnosis != null)
+            {
+                order.Diagnosis = Parameter.Diagnosis;
+                await context.OrderHistories.AddAsync(CreateOrderHistory(order, employee, "Wystawiono diagnozę", Parameter.Diagnosis));
+            }   
+            
+            if(Parameter.Price != default)
+            {
+                order.Price = Parameter.Price;
+                await context.OrderHistories.AddAsync(CreateOrderHistory(order, employee, "Określono kwotę naprawy", $"Kwota do zapłaty: {Parameter.Price} zł"));
+            }
+
+            if(Parameter.PayedPrice != default)
+            {
+                order.PayedPrice = Parameter.PayedPrice;
+                await context.OrderHistories.AddAsync(CreateOrderHistory(order, employee, "Przyjęcie gotówki", $"Przyjęto: {Parameter.PayedPrice} zł "));
+            }
 
             await context.SaveChangesAsync();
             return order;
+        }
+
+        OrderHistory CreateOrderHistory(Order order, Employee employee, string title, string text)
+        {
+            return new OrderHistory()
+            {
+                Title = title,
+                Description = text,
+                Date = DateTime.Now,
+                Employee = employee,
+                Order = order
+            };
         }
     }
 }

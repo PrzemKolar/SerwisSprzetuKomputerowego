@@ -27,7 +27,8 @@ namespace Serwis.ApplicationServices.Mappings
             this.CreateMap<EditOrderRequest, DataAccess.Entities.Order>()
                 .ForMember(x => x.Diagnosis, y => y.MapFrom(z => z.Diagnosis))
                 .ForMember(x => x.Price, y => y.MapFrom(z => z.Price))
-                .ForMember(x => x.Id, y => y.MapFrom(z => z.Id));
+                .ForMember(x => x.Id, y => y.MapFrom(z => z.Id))
+                .ForMember(x => x.PayedPrice, y => y.MapFrom(z => z.Id));
 
             this.CreateMap<GetOrdersByFiltersRequest, GetOrdersByFiltersQuery>()
                 .ForMember(x => x.Device, y => y.MapFrom(z => z.Device))

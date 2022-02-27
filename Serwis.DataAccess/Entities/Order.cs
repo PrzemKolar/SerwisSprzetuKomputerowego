@@ -9,6 +9,16 @@ namespace Serwis.DataAccess.Entities
 {
     public class Order : EntityBase
     {
+        public enum StatusEnum
+        {
+            inQueue,
+            inDiagnosis,
+            waitingForTheClientDecision,
+            inRepair,
+            Repaired,
+            Closed
+        }
+
         [Required]
         public Client Client { get; set; }
 
@@ -28,6 +38,11 @@ namespace Serwis.DataAccess.Entities
         public string Diagnosis { get; set; }
 
         public float Price { get; set; }
+
+        public float PayedPrice { get; set; }
+
+        [Required]
+        public StatusEnum RepairStatus { get; set; }
 
         [Required]
         public DateTime OrderDate { get; set; }
