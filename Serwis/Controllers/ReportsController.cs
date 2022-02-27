@@ -28,6 +28,14 @@ namespace Serwis.Controllers
         {
             return HandleRequest<GetResignedOrdersRequest, GetResignedOrdersResponse>(request);
         }
+        
+        [HttpGet]
+        [Route("Delayed")]
+        public Task<IActionResult> GetDelayedOrders([FromQuery] GetDelayedOrdersRequest request)
+        {
+            return HandleRequest<GetDelayedOrdersRequest, GetDelayedOrdersResponse>(request);
+        }
+
 
     }
 }
